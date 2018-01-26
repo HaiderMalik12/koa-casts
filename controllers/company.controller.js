@@ -27,13 +27,13 @@ module.exports = {
     async findOne(ctx){
         try {
 
-          const company = await ctx.db.Company.findOne({
+            const company = await ctx.db.Company.findOne({
                 id: ctx.params.id
             });
-          if(!company){
-              ctx.throw(404, 'company id is invalid');
-          }
-          ctx.body = company;
+            if (!company) {
+                ctx.throw(404, 'company id is invalid');
+            }
+            ctx.body = company;
         }
         catch (err) {
             ctx.throw(500, err)
@@ -43,10 +43,13 @@ module.exports = {
         try {
 
             const results = await ctx.db.Company.destroy({
-                id: ctx.params.id
+                where: {
+                    id: ctx.params.id
+                }
             });
 
-            ctx.body = results;
+            results === 0 ? ctx.throw(500, 'invalid id provided') : ctx.body = `company is deleted with id ${ctx.params.id}`;
+
         }
         catch (err) {
             ctx.throw(500, err)
