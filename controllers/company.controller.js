@@ -54,5 +54,25 @@ module.exports = {
         catch (err) {
             ctx.throw(500, err)
         }
+    },
+    async update(ctx){
+        try {
+
+            const results = await ctx.db.Company.update({
+                name: ctx.request.body.name,
+                city: ctx.request.body.city,
+                addres: ctx.request.body.address
+            }, {
+                where: {
+                    id: ctx.params.id
+                }
+            });
+
+            results === 0 ? ctx.throw(500, 'invalid id provided') : ctx.body = `company is updated with id ${ctx.params.id}`;
+
+        }
+        catch (err) {
+            ctx.throw(500, err)
+        }
     }
 };
