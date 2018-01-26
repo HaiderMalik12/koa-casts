@@ -38,5 +38,18 @@ module.exports = {
         catch (err) {
             ctx.throw(500, err)
         }
+    },
+    async destroy(ctx){
+        try {
+
+            const results = await ctx.db.Company.destroy({
+                id: ctx.params.id
+            });
+
+            ctx.body = results;
+        }
+        catch (err) {
+            ctx.throw(500, err)
+        }
     }
 };
