@@ -20,8 +20,7 @@ module.exports = {
             ctx.body = await ctx.db.Company.findAll({
                 include:[
                     {
-                        model: ctx.db.Job,
-                        as: 'jobs_'
+                        model: ctx.db.Job
 
                     }
                 ]
