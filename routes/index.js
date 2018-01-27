@@ -23,5 +23,6 @@ router.post('/applications', ApplicationController.create);
 
 //User routes
 router.post('/signup', UserController.signup);
+router.post('/login', UserController.login);
 
 module.exports = router;

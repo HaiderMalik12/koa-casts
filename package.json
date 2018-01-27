@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "koa": "^2.4.1",
     "koa-parser": "^0.4.2",
     "koa-router": "^7.3.0",
