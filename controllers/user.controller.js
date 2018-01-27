@@ -1,4 +1,5 @@
 const UtilService = require('../services/util.service');
+const JwtService = require('../services/jwt.service');
 
 module.exports = {
 
@@ -47,7 +48,16 @@ module.exports = {
 
             const matched = UtilService.comparedPassword(password, user.password);
             if (matched) {
-                ctx.body = user;
+
+                //create a json webtoken for the user
+                const token = JwtService.issue({
+                    payload:{
+                        user: user.id
+                    }
+                },'1 day');
+
+                ctx.body = {token};
+
             } else {
                 ctx.throw(500, 'invalid password');
             }
