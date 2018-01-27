@@ -8,5 +8,8 @@ module.exports = {
          expiresIn:expiresIn
         })
 
+    },
+    verify(token){
+        return jwt.verify(token, config.development.secret);
     }
 };

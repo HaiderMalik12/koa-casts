@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Company.associate = models => {
-        Company.hasMany(models.Job)
+        Company.hasMany(models.Job);
+        Company.belongsTo(models.User);
     };
     return Company;
 };

@@ -6,20 +6,21 @@ const {
     ApplicationController,
     UserController
 } = require('../controllers');
+const isAuthenticated = require('../polices/isAuthenticated');
 
 //define all your routes
-router.post('/companies', CompanyController.create);
-router.get('/companies', CompanyController.find);
-router.get('/companies/:id', CompanyController.findOne);
-router.delete('/companies/:id', CompanyController.destroy);
-router.put('/companies/:id', CompanyController.update);
+router.post('/companies', isAuthenticated, CompanyController.create);
+router.get('/companies', isAuthenticated, CompanyController.find);
+router.get('/companies/:id', isAuthenticated, CompanyController.findOne);
+router.delete('/companies/:id', isAuthenticated, CompanyController.destroy);
+router.put('/companies/:id', isAuthenticated, CompanyController.update);
 
 //Jobs route
-router.post('/jobs', JobController.create);
-router.get('/jobs', JobController.find);
+router.post('/jobs', isAuthenticated, JobController.create);
+router.get('/jobs', isAuthenticated, JobController.find);
 
 //Application route
-router.post('/applications', ApplicationController.create);
+router.post('/applications', isAuthenticated, ApplicationController.create);
 
 //User routes
 router.post('/signup', UserController.signup);

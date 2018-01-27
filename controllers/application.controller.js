@@ -9,7 +9,7 @@ module.exports = {
             const candidate = await ctx.db.Candidate.create({
                 firstName: ctx.request.body.firstName,
                 lastName: ctx.request.body.lastName,
-                email: ctx.request.body.email,
+                email: ctx.request.body.email
             });
 
             ctx.body = await ctx.db.Application.create({

@@ -6,7 +6,8 @@ module.exports = {
             ctx.body = await ctx.db.Company.create({
                 name: ctx.request.body.name,
                 city: ctx.request.body.city,
-                address: ctx.request.body.address
+                address: ctx.request.body.address,
+                UserId: ctx.state.user
             });
 
         }
@@ -18,12 +19,14 @@ module.exports = {
     async find(ctx){
         try {
             ctx.body = await ctx.db.Company.findAll({
-                include:[
+                UserId: ctx.state.user,
+                include: [
                     {
                         model: ctx.db.Job
 
                     }
                 ]
+
             });
 
         }
