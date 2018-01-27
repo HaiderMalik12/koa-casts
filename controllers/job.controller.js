@@ -20,5 +20,21 @@ module.exports = {
         catch (err) {
             ctx.throw(500, err);
         }
+    },
+    async find(ctx){
+        try{
+
+            ctx.body = await ctx.db.Job.findAll({
+                include:[
+                    {
+                        model: ctx.db.Candidate
+                    }
+                ]
+            })
+
+        }
+        catch (err){
+            ctx.throw(500, err);
+        }
     }
 };
