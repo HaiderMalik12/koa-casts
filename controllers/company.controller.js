@@ -1,5 +1,24 @@
 module.exports = {
 
+
+    /**
+     *@api {post} /companies
+     *@apiGroup Companies
+     * @apiName CreateCompany
+     * @apiSuccess {Object} Company  A newly created Company Object
+     * @apiExample {curl} Example usage:
+     * curl -i http://localhost:4000/companies
+     * @apiDescription LoggedIn user can register new Company
+     * @apiHeader {String} Authorization  JWT Authorization header
+     * @apiHeaderExample {json} Request Authorization Header
+     * {
+     *  "authorization" : "jkahdkjashdk324324342"
+     * }
+     * @apiParam {String} [name]
+     * @apiParam {String} [city]
+     * @apiParam {String} [address]
+     * @apiParam {Number} [UserId]
+     */
     async create(ctx){
 
         try {
@@ -16,6 +35,20 @@ module.exports = {
         }
 
     },
+    /**
+     *@api {get} /companies
+     *@apiGroup Companies
+     * @apiName GetCompany
+     * @apiSuccess {Object[]} Company List of Companies with Jobs
+     * @apiExample {curl} Example usage:
+     * curl -i http://localhost:4000/companies
+     * @apiDescription LoggedIn user can view all the companies
+     * @apiHeader {String} Authorization  JWT Authorization header
+     * @apiHeaderExample {json} Request Authorization Header
+     * {
+     *  "authorization" : "jkahdkjashdk324324342"
+     * }
+     */
     async find(ctx){
         try {
             ctx.body = await ctx.db.Company.findAll({
