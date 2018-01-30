@@ -38,7 +38,7 @@ module.exports = {
     /**
      *@api {get} /companies
      *@apiGroup Companies
-     * @apiName GetCompany
+     * @apiName GetCompanies
      * @apiSuccess {Object[]} Company List of Companies with Jobs
      * @apiExample {curl} Example usage:
      * curl -i http://localhost:4000/companies
@@ -67,6 +67,20 @@ module.exports = {
             ctx.throw(500, err);
         }
     },
+    /**
+     *@api {get} /companies/:id
+     *@apiGroup Companies
+     * @apiName GetCompany
+     * @apiSuccess {Object} Company A single Company by Id
+     * @apiExample {curl} Example usage:
+     * curl -i http://localhost:4000/companies/:id
+     * @apiDescription LoggedIn user can get single company by id
+     * @apiHeader {String} Authorization  JWT Authorization header
+     * @apiHeaderExample {json} Request Authorization Header
+     * {
+     *  "authorization" : "jkahdkjashdk324324342"
+     * }
+     */
     async findOne(ctx){
         try {
 
@@ -82,6 +96,21 @@ module.exports = {
             ctx.throw(500, err)
         }
     },
+
+    /**
+     *@api {delete} /companies/:id
+     *@apiGroup Companies
+     * @apiName deleteCompany
+     * @apiSuccess {Object} Company is deleted successfully
+     * @apiExample {curl} Example usage:
+     * curl -i http://localhost:4000/companies/:id
+     * @apiDescription LoggedIn user can delete the company by id
+     * @apiHeader {String} Authorization  JWT Authorization header
+     * @apiHeaderExample {json} Request Authorization Header
+     * {
+     *  "authorization" : "jkahdkjashdk324324342"
+     * }
+     */
     async destroy(ctx){
         try {
 
@@ -98,6 +127,20 @@ module.exports = {
             ctx.throw(500, err)
         }
     },
+    /**
+     *@api {put} /companies/:id
+     *@apiGroup Companies
+     * @apiName UpdateCompany
+     * @apiSuccess {Object} Company is updated successfully
+     * @apiExample {curl} Example usage:
+     * curl -i http://localhost:4000/companies/:id
+     * @apiDescription LoggedIn user can get single company by id
+     * @apiHeader {String} Authorization  JWT Authorization header
+     * @apiHeaderExample {json} Request Authorization Header
+     * {
+     *  "authorization" : "jkahdkjashdk324324342"
+     * }
+     */
     async update(ctx){
         try {
 
