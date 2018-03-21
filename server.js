@@ -10,7 +10,7 @@ const app = new Koa();
 const PORT = 4000;
 
 const db = require('./models');
-  db.sequelize.sync({force:true})
+  db.sequelize.sync({})
       .then(() => console.log('models synced!'))
       .catch((err) => console.log(err));
 

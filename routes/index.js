@@ -18,6 +18,7 @@ router.put('/companies/:id', isAuthenticated, CompanyController.update);
 //Jobs route
 router.post('/jobs', isAuthenticated, JobController.create);
 router.get('/jobs', isAuthenticated, JobController.find);
+router.get('/jobs/raw', JobController.findJobsRawQuery);
 
 //Application route
 router.post('/applications', isAuthenticated, ApplicationController.create);
